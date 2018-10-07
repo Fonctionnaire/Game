@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block metaTitle %}Connexion{% endblock %}
+{% block title %}Connexion{% endblock %}
+{% block metaDesc %}Utilisez votre pseudo et votre mot de passe pour vous connecter.{% endblock %}
+{% block metaWords %}étude, études, connexion, login{% endblock %}
+{% block body %}
+<section class="row">
+    <article class="col s12 m12 l6 offset-l3 security-form">
+        <div>
+            <h1 class="center">Connexion</h1>
+        </div>
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    <form action="{{ path('login') }}" method="post">
+        <div class="input-field">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        </div>
+        <div class="input-field">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="_password" />
+        </div>
+
+        <div class="center security-form-terms">
+            <label for="remember_me">
+            <input type="checkbox" id="remember_me" name="_remember_me" />
+                <span>Se souvenir de moi</span></label>
+        </div>
+        <div class="center">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <button class="btn wave-effects" type="submit">Se connecter</button>
+        </div>
+    </form>
+    <div class="center forgot-password">
+        <a href="{{ path('forgot_password') }}">Mot de passe oublié ?</a>
+    </div>
+    </article>
+</section>
+{% endblock %}
