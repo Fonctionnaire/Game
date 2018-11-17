@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+{% block metaTitle %}Nous contacter{% endblock %}
+{% block title %}Nous contacter{% endblock %}
+{% block metaDesc %}Grâce à ce formulaire, vous pouvez nous contacter si vous avez une question, nous signaler un
+    contenu, ou encore nous faire par d'idées d'amélioration.{% endblock %}
+{% block metaWords %}contact{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/contactCountChars.js') }}"></script>
+{% endblock %}
+{% block bread %}
+    {{ prent() }} > Nous contacter
+{% endblock %}
+{% block body %}
+
+<section class="row">
+    <article class="col s12 m12 l8 contact-form z-depth-2">
+        <h1 class="center">Nous contacter</h1>
+        <div class="contact-form-oblig">
+            <em>Tous les champs sont obligatoires</em>
+        </div>
+        {{ form_start(form) }}
+        <div class="input-field">
+            {{ form_label(form.pseudo, 'Votre nom ou pseudo') }}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                {{ form_widget(form.pseudo, {'attr': {'value': app.user.username}}) }}
+            {% else %}
+                {{ form_widget(form.pseudo) }}
+            {% endif %}
+            {{ form_errors(form.pseudo) }}
+        </div>
+        <div class="input-field">
+            {{ form_label(form.email, 'Votre adresse E-mail') }}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') or is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                {{ form_widget(form.email, {'attr': {'value': app.user.email }}) }}
+            {% else %}
+                {{ form_widget(form.email) }}
+            {% endif %}
+            {{ form_errors(form.email) }}
+        </div>
+        <div class="input-field">
+            {{ form_label(form.sujet, 'Sujet de votre message') }}
+            {{ form_widget(form.sujet) }}
+            {{ form_errors(form.sujet) }}
+        </div>
+        <div class="input-field">
+            {{ form_label(form.texte, 'Votre message') }}
+            {{ form_widget(form.texte) }}
+            {{ form_errors(form.texte) }}
+        </div>
+        <div class="block-count-chars" >
+            <p class="right-align "><span class="count-chars">0</span> / 1200 </p>
+        </div>
+        <div class="center security-form-terms">
+            <label for="contact_acceptTerms" class="required">
+            {{ form_widget(form.acceptTerms) }}
+            <span>J'accepte les <a href="{{ path('mentions_legales') }}" target="_blank">conditions
+                    d'utilisation</a></span></label>
+            {{ form_errors(form.acceptTerms) }}
+        </div>
+        <div class="center">
+            <div class="g-recaptcha" data-sitekey="6LfLn1sUAAAAAOqqu7419dZftCZrGtsHPmCd8ErK"></div>
+        </div>
+        <div class="center">
+            {{ form_widget(form.valider) }}
+        </div>
+        {{ form_errors(form) }}
+        {{ form_end(form) }}
+    </article>
+</section>
+
+
+{% endblock%}

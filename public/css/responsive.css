@@ -1,0 +1,8 @@
+/* DIVERS */
+
+/* NAV */
+@media only screen and (max-width : 992px) {
+main, footer {
+        padding-left: 0;
+    }
+}

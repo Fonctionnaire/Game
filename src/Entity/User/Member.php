@@ -113,11 +113,107 @@ class Member implements UserInterface
      */
     private $userIp;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User\Country")
+     */
+    private $country;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\User\Language", mappedBy="members")
+     */
+    private $languages;
+
+    /**
+     * @var array
+     * @ORM\Column(name="hobbies", type="array", nullable=true)
+     */
+    private $hobbies = [];
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(name="birthdate", type="date")
+     */
+    private $birthdate;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User\InternetSpeed")
+     */
+    private $internetSpeed;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Game\GameSession", inversedBy="members")
+     */
+    private $session;
+
 
     public function __construct()
     {
         $this->roles = ['ROLE_USER'];
         $this->dateRegister = new \DateTime();
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getBirthdate(): \DateTime
+    {
+        return $this->birthdate;
+    }
+
+    /**
+     * @param \DateTime $birthdate
+     */
+    public function setBirthdate(\DateTime $birthdate): void
+    {
+        $this->birthdate = $birthdate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInternetSpeed()
+    {
+        return $this->internetSpeed;
+    }
+
+    /**
+     * @param mixed $internetSpeed
+     */
+    public function setInternetSpeed($internetSpeed): void
+    {
+        $this->internetSpeed = $internetSpeed;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSession()
+    {
+        return $this->session;
+    }
+
+    /**
+     * @param mixed $session
+     */
+    public function setSession($session): void
+    {
+        $this->session = $session;
+    }
+
+    /**
+     * @return array
+     */
+    public function getHobbies(): array
+    {
+        return $this->hobbies;
+    }
+
+    /**
+     * @param array $hobbies
+     */
+    public function setHobbies(array $hobbies): void
+    {
+        $this->hobbies = $hobbies;
     }
 
     /**
@@ -334,6 +430,39 @@ class Member implements UserInterface
     {
         $this->roles = $roles;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry($country): void
+    {
+        $this->country = $country;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
+    }
+
+    /**
+     * @param mixed $languages
+     */
+    public function setLanguages($languages): void
+    {
+        $this->languages = $languages;
+    }
+
 
     public function eraseCredentials()
     {

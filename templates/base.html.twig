@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
@@ -12,8 +13,18 @@
     <header>
         {% include 'navigation/nav.html.twig' %}
     </header>
+    <div class="nav-bread z-depth-2">
+        {% block bread %}
+            <a href="{{ path('homepage') }}">Accueil</a> <span> > </span>
+        {% endblock %}
+    </div>
+    {% block slider %}
+    {% endblock %}
+    <main>
+
         {% block body %}
         {% endblock %}
+    </main>
     <footer>
         {% include 'navigation/footer.html.twig' %}
     </footer>
