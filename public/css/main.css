@@ -1,0 +1,100 @@
+/* DIVERS */
+
+/* NAV */
+#social-bar
+{
+    height: 35px;
+    width: 100%;
+    background: #212121;
+}
+
+nav
+{
+    background: #512da8;
+}
+
+nav .nav-content
+{
+
+}
+
+.nav-bread
+{
+    padding: 10px 0 10px 20%;
+    background: #212121;
+}
+
+.nav-bread a
+{
+    color: white;
+}
+
+.nav-bread span
+{
+    color: grey;
+}
+
+/* FOOTER */
+
+
+
+/* ========= HOMEPAGE ========== */
+/* SLIDER */
+.owl-carousel
+{
+    background: #212121;
+}
+
+.owl-carousel .slider-game
+{
+    border: 1px solid rgba(255,255,255,0.3);
+}
+.owl-carousel .slider-game img
+{
+    height: 250px;
+    min-height: 250px;
+    max-height: 250px;
+}
+
+.owl-carousel .slider-game a
+{
+    color: black;
+}
+
+.owl-carousel .slider-game:hover figcaption
+{
+    background: #512da8;
+    color: white;
+}
+
+.owl-carousel figcaption
+{
+    padding: 10px;
+    background: white;
+    transition: 0.3s;
+}
+
+/* SECTIONS */
+.home-first-section
+{
+    background: url("../image/backgrounds/home_background_siege2.jpg") no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.home-second-section
+{
+    width: 100%;
+    height: 300px;
+    background: #212121;
+    border: 3px solid black;
+}
+
+.home-third-section
+{
+    background: url("../image/backgrounds/home_background_hs.jpg") no-repeat center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}

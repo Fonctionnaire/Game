@@ -1,6 +1,46 @@
 {% extends 'base.html.twig' %}
+{% block slider %}
+    <div class="owl-carousel">
+        <div class="slider-game">
+            <a href="#">
+                <figure>
+                    <img src="{{ asset('image/backgrounds/christmas-1909947_640.jpg') }}" alt="">
+                    <figcaption class="center">
+                        <p>Jeu 1</p>
+                        <p>Nombre de gamers</p>
+                    </figcaption>
+                </figure>
+            </a>
+        </div>
+        <div class="slider-game">
+            <a href="#">
+                <figure>
+                    <img src="{{ asset('image/backgrounds/christmas-1909947_640.jpg') }}" alt="">
+                    <figcaption class="center">
+                        <p>Jeu 2</p>
+                        <p>Nombre de gamers</p>
+                    </figcaption>
+                </figure>
+            </a>
+        </div>
+    </div>
+{% endblock %}
 {% block body %}
 
-<h1>Hello World !</h1>
+    <section class="home-first-section">
+        <article class="container">
+
+        </article>
+    </section>
+    <section class="home-second-section">
+        <article class="container">
+
+        </article>
+    </section>
+    <section class="home-third-section">
+        <article class="container">
+
+        </article>
+    </section>
 
 {% endblock %}

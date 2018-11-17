@@ -8,7 +8,6 @@
 
 namespace App\Controller\HomePage;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
